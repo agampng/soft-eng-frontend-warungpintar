@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import axios from "utils/configs/axios";
 
 class Home extends Component {
@@ -50,21 +51,28 @@ class Home extends Component {
           <div className="row m-4">
             {items.map((item) => (
               <div key={item.name} className="col-md-4 text-center my-4">
-                <div className="card">
-                  <img
-                    className="card-img-top"
-                    src={`https://pokeres.bastionbot.org/images/pokemon/${item.url.substring(
-                      34,
-                      item.url.length - 1
-                    )}.png`}
-                    alt="Card image cap"
-                  />
-                  <div className="card-body">
-                    <p className="card-text font-weight-bold text-uppercase">
-                      {item.name}
-                    </p>
+                <Link
+                  to={{
+                    pathname: `detail/${item.name}`,
+                    state: { name: item.name },
+                  }}
+                >
+                  <div className="card">
+                    <img
+                      className="card-img-top"
+                      src={`https://pokeres.bastionbot.org/images/pokemon/${item.url.substring(
+                        34,
+                        item.url.length - 1
+                      )}.png`}
+                      alt="Card image cap"
+                    />
+                    <div className="card-body">
+                      <p className="card-text font-weight-bold text-uppercase">
+                        {item.name}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </div>
             ))}
           </div>
