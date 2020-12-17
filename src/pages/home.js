@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "utils/configs/axios";
 
-class Home extends Component {
+export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -172,7 +171,3 @@ class Home extends Component {
     }
   }
 }
-
-const mapStateToProps = (state) => ({});
-
-export default connect(mapStateToProps, {})(Home);

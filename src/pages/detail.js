@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "utils/configs/axios";
 
-class Detail extends Component {
+export default class Detail extends Component {
   constructor(props) {
     super(props);
     this.goBack = this.goBack.bind(this);
@@ -32,7 +31,7 @@ class Detail extends Component {
   }
 
   onChange = (e) => {
-    this.setState({ compareName: e.target.value });
+    this.setState({ compareName: e.target.value.toLowerCase() });
   };
 
   componentDidMount() {
@@ -141,7 +140,3 @@ class Detail extends Component {
     }
   }
 }
-
-const mapStateToProps = (state) => ({});
-
-export default connect(mapStateToProps, {})(Detail);

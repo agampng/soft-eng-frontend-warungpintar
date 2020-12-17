@@ -3,7 +3,6 @@ import { createBrowserHistory } from "history";
 import "assets/scss/style.scss";
 import { Router, Route, Switch } from "react-router-dom";
 
-import Landing from "pages/landing";
 import Home from "pages/home";
 import DetailPoke from "pages/detail";
 import Compare from "pages/compare";
@@ -20,7 +19,6 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/detail/:id" component={DetailPoke} />
           <Route exact path="/detail/:name1/:name2" component={Compare} />
-          <Route exact path="/sss" component={Landing} />
         </Switch>
       </Router>
     </div>
