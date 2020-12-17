@@ -61,7 +61,8 @@ export default class Home extends Component {
   onChange = (e) => {
     console.log(e.target.value);
     this.setState({ type: e.target.value, isLoaded: false }, () => {
-      if (e.target.value) this.getPokeByTypes(this.state.type);
+      if (e.target.value !== "all") this.getPokeByTypes(this.state.type);
+      else this.getAllPoke("pokemon");
     });
   };
 
