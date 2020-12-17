@@ -6,10 +6,17 @@ import axios from "utils/configs/axios";
 class Detail extends Component {
   constructor(props) {
     super(props);
+    this.goBack = this.goBack.bind(this);
+
     this.state = {
       items: {},
       isLoaded: false,
+      compareName: "",
     };
+  }
+
+  goBack() {
+    this.props.history.goBack();
   }
   getPokeData() {
     axios
@@ -23,6 +30,10 @@ class Detail extends Component {
       })
       .catch();
   }
+
+  onChange = (e) => {
+    this.setState({ compareName: e.target.value });
+  };
 
   componentDidMount() {
     this.getPokeData();
@@ -44,13 +55,9 @@ class Detail extends Component {
               </h1>
             </div>
             <div className="col">
-              <Link
-                to={{
-                  pathname: `/`,
-                }}
-              >
-                <p className="my-4">Back</p>
-              </Link>
+              <button className="float-right" onClick={this.goBack}>
+                &lt; Go Back
+              </button>
             </div>
           </div>
 
@@ -90,6 +97,33 @@ class Detail extends Component {
                   <li>{item.type.name}</li>
                 ))}
               </ul>
+              <h3 className="my-3">Compare Pokemon</h3>
+              <div className="">
+                <input
+                  onChange={this.onChange}
+                  value={this.state.compareName}
+                  name="compareName"
+                  id="compareName"
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter the comparison item. e.g.: rattata"
+                />
+                <Link
+                  className="disabled-link"
+                  to={{
+                    pathname: `${items.name}/${this.state.compareName}`,
+                    state: { name1: items.name, name2: this.state.compareName },
+                  }}
+                >
+                  <button
+                    type="button"
+                    className="mt-4 btn btn-primary"
+                    disabled={!this.state.compareName}
+                  >
+                    Compare
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
           <h3 className="my-4">Statistics</h3>

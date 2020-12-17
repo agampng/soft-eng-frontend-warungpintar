@@ -158,7 +158,7 @@ class Home extends Component {
                 <button
                   type="button"
                   onClick={() => this.changePage(next)}
-                  className="btn color-primary btn-sm mr-1"
+                  className="btn btn-primary mr-1"
                 >
                   Next
                 </button>
