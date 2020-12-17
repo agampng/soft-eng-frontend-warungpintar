@@ -9,4 +9,4 @@ In the project directory, you can run:
 
 ## Cloud
 
-https://5fdb0c0481b9c1893cd827e4--pokedex-agampng.netlify.app/
+https://pokedex-agampng.netlify.app/
